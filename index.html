@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ladakh Packing Checklist</title>
+  <style>
+    :root {
+      --bg: #f4f7f9;
+      --card: #ffffff;
+      --text: #17212b;
+      --muted: #6b7785;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --border: #e5e7eb;
+      --success: #16a34a;
+    }
+
+```
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #eef6ff, #f8fafc);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.quote {
+  margin-top: 18px;
+  padding: 14px 18px;
+  background: #17212b;
+  color: white;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.progress-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2563eb, #16a34a);
+  transition: width 0.25s ease;
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 15px 16px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+.item:hover {
+  transform: translateY(-1px);
+  border-color: #bfdbfe;
+}
+
+.item input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.item label {
+  cursor: pointer;
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.item.checked {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.item.checked label {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.category {
+  margin: 24px 0 10px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border: 0;
+  border-radius: 12px;
+  background: #17212b;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #263442;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 24px;
+}
+```
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+```
+<header>
+  <h1>🏔️ LADAKH</h1>
+  <div class="subtitle">Created: September 14, 2026</div>
+  <div class="quote">Don't be GAMA in the land of LAMA 🏔️</div>
+</header>
+
+<div class="progress-card">
+  <div class="progress-top">
+    <span>Packing Progress</span>
+    <span id="progressText">0 / 18</span>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+</div>
+
+<div class="checklist">
+
+  <div class="category">👕 Clothes</div>
+
+  <div class="item">
+    <input type="checkbox" id="item1">
+    <label for="item1">Innerwear + undergarments + towel</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item2">
+    <label for="item2">Fleece + windcheater + down jacket + heating pad</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item3">
+    <label for="item3">Jeans / trackpants — 2–3</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item4">
+    <label for="item4">Full T-shirt / T-shirt / shirt — 4</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item5">
+    <label for="item5">Head cap + balaclava + sunglasses + gloves</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item6">
+    <label for="item6">Shoes + 3 pairs of socks</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item7">
+    <label for="item7">Handkerchief</label>
+  </div>
+
+
+  <div class="category">🔦 Travel Essentials</div>
+
+  <div class="item">
+    <input type="checkbox" id="item8">
+    <label for="item8">Lighter + torch + knife</label>
+  </div>
+
+
+  <div class="category">💊 Medicines & First Aid</div>
+
+  <div class="item">
+    <input type="checkbox" id="item9">
+    <label for="item9">ORS — 10 packets</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item10">
+    <label for="item10">Diamox — 250 mg</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item11">
+    <label for="item11">Paracetamol</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item12">
+    <label for="item12">Vomiting medicine</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item13">
+    <label for="item13">Loose-motion medicine</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item14">
+    <label for="item14">Bandages / basic first-aid supplies</label>
+  </div>
+
+
+  <div class="category">🧴 Toiletries & Skin Care</div>
+
+  <div class="item">
+    <input type="checkbox" id="item15">
+    <label for="item15">Toothpaste + toothbrush</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item16">
+    <label for="item16">Moisturiser</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item17">
+    <label for="item17">Lip balm</label>
+  </div>
+
+  <div class="item">
+    <input type="checkbox" id="item18">
+    <label for="item18">Sunscreen</label>
+  </div>
+
+</div>
+
+<button onclick="resetChecklist()">↻ Reset Checklist</button>
+
+<footer>
+  🏔️ Ladakh Packing Checklist • Travel safe!
+</footer>
+```
+
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.item input');
+    const progressText = document.getElementById('progressText');
+    const progressFill = document.getElementById('progressFill');
+
+    items.forEach((checkbox, index) => {
+      const saved = localStorage.getItem('ladakh-item-' + index);
+
+      if (saved === 'true') {
+        checkbox.checked = true;
+      }
+
+      checkbox.addEventListener('change', () => {
+        localStorage.setItem(
+          'ladakh-item-' + index,
+          checkbox.checked
+        );
+
+        updateChecklist();
+      });
+    });
+
+    function updateChecklist() {
+      let completed = 0;
+
+      items.forEach((checkbox) => {
+        const item = checkbox.closest('.item');
+
+        if (checkbox.checked) {
+          completed++;
+          item.classList.add('checked');
+        } else {
+          item.classList.remove('checked');
+        }
+      });
+
+      const total = items.length;
+      const percentage = total
+        ? Math.round((completed / total) * 100)
+        : 0;
+
+      progressText.textContent = `${completed} / ${total}`;
+      progressFill.style.width = percentage + '%';
+    }
+
+    function resetChecklist() {
+      items.forEach((checkbox, index) => {
+        checkbox.checked = false;
+        localStorage.removeItem('ladakh-item-' + index);
+      });
+
+      updateChecklist();
+    }
+
+    updateChecklist();
+  </script>
+
+</body>
+</html>
