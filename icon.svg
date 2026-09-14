@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="110" fill="#0b1726"/>
+  <path d="M40 410L190 180l80 120 70-105 132 215H40z" fill="#f8fbff"/>
+  <path d="M190 180l45 68 35-48-80-20z" fill="#8fb7d9"/>
+  <circle cx="390" cy="115" r="42" fill="#ffd166"/>
+  <text x="256" y="475" text-anchor="middle"
+        font-family="Arial" font-size="42" font-weight="bold"
+        fill="#fff">LADAKH</text>
+</svg>

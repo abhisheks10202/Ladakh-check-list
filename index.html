@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1726" />
+  <meta name="description" content="Ladakh travel packing checklist." />
+  <link rel="manifest" href="manifest.json" />
+  <title>🏔️ Ladakh Checklist</title>
+
+  <style>
+    :root {
+      --bg: #eef3f7;
+      --card: rgba(255,255,255,.92);
+      --text: #17212b;
+      --muted: #667586;
+      --line: #dfe6ec;
+      --primary: #1677ff;
+      --primary-dark: #0754bd;
+      --danger: #dc3545;
+      --mountain: #0b1726;
+      --snow: #f8fbff;
+      --shadow: 0 12px 35px rgba(15, 35, 55, .09);
+    }
+
+    [data-theme="dark"] {
+      --bg: #08111d;
+      --card: #101c29;
+      --text: #f1f5f9;
+      --muted: #91a0b1;
+      --line: #263545;
+      --primary: #5ca3ff;
+      --primary-dark: #287fd9;
+      --danger: #ff6977;
+      --mountain: #050c15;
+      --snow: #0d1723;
+      --shadow: 0 12px 35px rgba(0,0,0,.25);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      transition: background .25s, color .25s;
+    }
+
+    button, input { font: inherit; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        linear-gradient(180deg, rgba(7,20,35,.2), rgba(7,20,35,.9)),
+        linear-gradient(135deg, #2f7197 0%, #102d46 52%, #07111d 100%);
+      min-height: 330px;
+      padding: 30px 18px 75px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -45px -10%;
+      height: 150px;
+      background: var(--bg);
+      clip-path: polygon(0 72%, 12% 48%, 21% 67%, 35% 28%, 47% 65%,
+        62% 36%, 76% 68%, 89% 42%, 100% 68%, 100% 100%, 0 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 760px;
+      margin: auto;
+      z-index: 2;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 50%;
+      color: white;
+      background: rgba(255,255,255,.1);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
+
+    .title {
+      margin: 35px 0 5px;
+      font-size: clamp(2.6rem, 12vw, 5rem);
+      line-height: .95;
+      letter-spacing: -4px;
+    }
+
+    .subtitle {
+      color: rgba(255,255,255,.76);
+      margin: 0;
+    }
+
+    .quote {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.17);
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .container {
+      width: min(760px, calc(100% - 28px));
+      margin: -35px auto 50px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .stats {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(15px);
+    }
+
+    .stat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 12px;
+    }
+
+    .percentage {
+      font-size: 2rem;
+      font-weight: 850;
+    }
+
+    .count {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .progress {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: var(--line);
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #1683ff, #25c48a);
+      transition: width .35s ease;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 13px;
+      padding: 13px 14px;
+      font-weight: 750;
+      cursor: pointer;
+      color: var(--text);
+      background: var(--line);
+    }
+
+    .btn.primary {
+      color: white;
+      background: var(--primary);
+    }
+
+    .btn:active { transform: scale(.98); }
+
+    .category {
+      margin: 28px 2px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: .78rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      font-weight: 850;
+    }
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(15,35,55,.035);
+      transition: .2s;
+    }
+
+    .item:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+
+    .item.done {
+      opacity: .68;
+    }
+
+    .check {
+      width: 23px;
+      height: 23px;
+      flex: 0 0 23px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .item-text {
+      flex: 1;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    .done .item-text {
+      text-decoration: line-through;
+    }
+
+    .item-actions {
+      display: flex;
+      gap: 4px;
+    }
+
+    .small-btn {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .small-btn:hover {
+      background: var(--line);
+      color: var(--text);
+    }
+
+    .add-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      margin-top: 11px;
+    }
+
+    .add-form input {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 12px 13px;
+      outline: none;
+    }
+
+    .add-form input:focus {
+      border-color: var(--primary);
+    }
+
+    .add-btn {
+      border: 0;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      padding: 0 17px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .empty {
+      padding: 12px;
+      color: var(--muted);
+      font-size: .9rem;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 15px 0 30px;
+      font-size: .82rem;
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 100;
+      left: 50%;
+      bottom: 25px;
+      transform: translate(-50%, 120px);
+      padding: 12px 17px;
+      color: white;
+      background: #17212b;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: transform .3s ease;
+      font-size: .9rem;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+    }
+
+    .celebrate {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      pointer-events: none;
+      display: none;
+      place-items: center;
+      background: rgba(5,15,25,.3);
+      backdrop-filter: blur(3px);
+    }
+
+    .celebrate.show { display: grid; }
+
+    .celebrate-box {
+      pointer-events: auto;
+      text-align: center;
+      padding: 30px;
+      border-radius: 25px;
+      background: var(--card);
+      box-shadow: 0 30px 80px rgba(0,0,0,.25);
+      animation: pop .4s ease;
+    }
+
+    .celebrate-box h2 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    @keyframes pop {
+      from { transform: scale(.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @media (max-width: 500px) {
+      .hero { min-height: 300px; }
+      .title { letter-spacing: -3px; }
+      .actions { grid-template-columns: 1fr 1fr; }
+      .item { padding: 13px 11px; }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="topbar">
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">🌙</button>
+        <button class="icon-btn" id="installBtn" aria-label="Install app" hidden>📲</button>
+      </div>
+
+```
+  <h1 class="title">LADAKH</h1>
+  <p class="subtitle">Your mountain packing checklist</p>
+  <div class="quote">Don't be GAMA in the land of LAMA 🏔️</div>
+</div>
+```
+
+  </header>
+
+  <main class="container">
+
+```
+<section class="stats">
+  <div class="stat-row">
+    <div>
+      <div class="percentage" id="percentage">0%</div>
+      <div class="count" id="count">0 of 0 packed</div>
+    </div>
+    <div>🎒</div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-fill" id="progress"></div>
+  </div>
+
+  <div class="actions">
+    <button class="btn primary" id="shareBtn">🔗 Share checklist</button>
+    <button class="btn" id="resetBtn">↻ Reset</button>
+  </div>
+</section>
+
+<div id="checklist"></div>
+
+<footer>
+  🏔️ Ladakh Packing Checklist · Created by Abhishek, September 14, 2026
+</footer>
+```
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="celebrate" id="celebrate">
+    <div class="celebrate-box">
+      <div style="font-size:3rem">🏔️🎉</div>
+      <h2>Ready for Ladakh!</h2>
+      <p>Everything on your checklist is packed.</p>
+      <button class="btn primary" onclick="closeCelebration()">Let's go!</button>
+    </div>
+  </div>
+
+<script>
+const DEFAULT_DATA = [
+  {
+    category: "👕 Clothes",
+    items: [
+      "Innerwear + undergarments + towel",
+      "Fleece + windcheater + down jacket + heating pad",
+      "Jeans / trackpants — 2–3",
+      "Full T-shirt / T-shirt / shirt — 4",
+      "Head cap + balaclava + sunglasses + gloves",
+      "Shoes + 3 pairs of socks",
+      "Handkerchief"
+    ]
+  },
+  {
+    category: "🔦 Travel Essentials",
+    items: [
+      "Lighter + torch + knife"
+    ]
+  },
+  {
+    category: "💊 Medicines & First Aid",
+    items: [
+      "ORS — 10 packets",
+      "Diamox — 250 mg",
+      "Paracetamol",
+      "Vomiting medicine",
+      "Loose-motion medicine",
+      "Bandages / basic first-aid supplies"
+    ]
+  },
+  {
+    category: "🧴 Toiletries & Skin Care",
+    items: [
+      "Toothpaste + toothbrush",
+      "Moisturiser",
+      "Lip balm",
+      "Sunscreen"
+    ]
+  }
+];
+
+const STORAGE_KEY = "ladakh-checklist-v2";
+const THEME_KEY = "ladakh-theme";
+
+let data = loadData();
+
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2);
+}
+
+function loadData() {
+  try {
+    const params = new URLSearchParams(location.search);
+    const shared = params.get("list");
+
+    if (shared) {
+      const decoded = JSON.parse(
+        decodeURIComponent(escape(atob(shared)))
+      );
+
+      if (Array.isArray(decoded)) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(decoded));
+        history.replaceState({}, "", location.pathname);
+        return decoded;
+      }
+    }
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed)) return parsed;
+    }
+  } catch (e) {
+    console.warn("Could not load saved checklist.", e);
+  }
+
+  return DEFAULT_DATA.map(section => ({
+    ...section,
+    id: uid(),
+    items: section.items.map(text => ({
+      id: uid(),
+      text,
+      done: false
+    }))
+  }));
+}
+
+function normalizeData() {
+  data = data.map(section => ({
+    id: section.id || uid(),
+    category: section.category,
+    items: section.items.map(item =>
+      typeof item === "string"
+        ? { id: uid(), text: item, done: false }
+        : item
+    )
+  }));
+}
+
+normalizeData();
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function render() {
+  const root = document.getElementById("checklist");
+  root.innerHTML = "";
+
+  data.forEach(section => {
+    const category = document.createElement("section");
+
+    const heading = document.createElement("div");
+    heading.className = "category";
+    heading.innerHTML = `
+      <span>${escapeHTML(section.category)}</span>
+      <span>${section.items.filter(i => i.done).length}/${section.items.length}</span>
+    `;
+
+    const items = document.createElement("div");
+    items.className = "items";
+
+    section.items.forEach(item => {
+      const row = document.createElement("div");
+      row.className = "item" + (item.done ? " done" : "");
+
+      row.innerHTML = `
+        <input
+          class="check"
+          type="checkbox"
+          ${item.done ? "checked" : ""}
+          aria-label="Mark ${escapeHTML(item.text)} as packed"
+        >
+
+        <div class="item-text">${escapeHTML(item.text)}</div>
+
+        <div class="item-actions">
+          <button class="small-btn edit" title="Edit">✏️</button>
+          <button class="small-btn delete" title="Delete">🗑️</button>
+        </div>
+      `;
+
+      row.querySelector(".check").addEventListener("change", e => {
+        item.done = e.target.checked;
+        save();
+        render();
+        updateStats();
+      });
+
+      row.querySelector(".delete").addEventListener("click", () => {
+        section.items = section.items.filter(i => i.id !== item.id);
+        save();
+        render();
+        updateStats();
+        toast("Item deleted");
+      });
+
+      row.querySelector(".edit").addEventListener("click", () => {
+        const newText = prompt("Edit item:", item.text);
+
+        if (newText && newText.trim()) {
+          item.text = newText.trim();
+          save();
+          render();
+          updateStats();
+        }
+      });
+
+      items.appendChild(row);
+    });
+
+    const form = document.createElement("form");
+    form.className = "add-form";
+
+    form.innerHTML = `
+      <input
+        type="text"
+        placeholder="Add an item..."
+        aria-label="Add item"
+        maxlength="120"
+      >
+      <button class="add-btn" type="submit">+ Add</button>
+    `;
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const input = form.querySelector("input");
+      const text = input.value.trim();
+
+      if (!text) return;
+
+      section.items.push({
+        id: uid(),
+        text,
+        done: false
+      });
+
+      save();
+      render();
+      updateStats();
+    });
+
+    category.appendChild(heading);
+    category.appendChild(items);
+    category.appendChild(form);
+    root.appendChild(category);
+  });
+}
+
+function updateStats() {
+  const all = data.flatMap(s => s.items);
+  const completed = all.filter(i => i.done).length;
+  const total = all.length;
+  const percentage = total ? Math.round(completed / total * 100) : 0;
+
+  document.getElementById("percentage").textContent = percentage + "%";
+  document.getElementById("count").textContent =
+    `${completed} of ${total} packed`;
+
+  document.getElementById("progress").style.width = percentage + "%";
+
+  if (percentage === 100 && total > 0 && !sessionStorage.getItem("celebrated")) {
+    sessionStorage.setItem("celebrated", "true");
+    document.getElementById("celebrate").classList.add("show");
+  }
+}
+
+function closeCelebration() {
+  document.getElementById("celebrate").classList.remove("show");
+}
+
+function resetChecklist() {
+  if (!confirm("Reset every item to unpacked?")) return;
+
+  data.forEach(section =>
+    section.items.forEach(item => item.done = false)
+  );
+
+  sessionStorage.removeItem("celebrated");
+  save();
+  render();
+  updateStats();
+  toast("Checklist reset");
+}
+
+function escapeHTML(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function toast(message) {
+  const el = document.getElementById("toast");
+  el.textContent = message;
+  el.classList.add("show");
+
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => {
+    el.classList.remove("show");
+  }, 2200);
+}
+
+async function shareChecklist() {
+  const encoded = btoa(
+    unescape(encodeURIComponent(JSON.stringify(data)))
+  );
+
+  const url = location.origin + location.pathname + "?list=" +
+    encodeURIComponent(encoded);
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "🏔️ My Ladakh Checklist",
+        text: "My Ladakh packing checklist",
+        url
+      });
+      return;
+    } catch (e) {}
+  }
+
+  try {
+    await navigator.clipboard.writeText(url);
+    toast("Share link copied!");
+  } catch (e) {
+    prompt("Copy this share link:", url);
+  }
+}
+
+function loadTheme() {
+  const saved = localStorage.getItem(THEME_KEY);
+  const theme = saved ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+  document.documentElement.dataset.theme = theme;
+  document.getElementById("themeBtn").textContent =
+    theme === "dark" ? "☀️" : "🌙";
+}
+
+function toggleTheme() {
+  const current = document.documentElement.dataset.theme;
+  const next = current === "dark" ? "light" : "dark";
+
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem(THEME_KEY, next);
+
+  document.getElementById("themeBtn").textContent =
+    next === "dark" ? "☀️" : "🌙";
+}
+
+document.getElementById("resetBtn").addEventListener("click", resetChecklist);
+document.getElementById("shareBtn").addEventListener("click", shareChecklist);
+document.getElementById("themeBtn").addEventListener("click", toggleTheme);
+
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  const installBtn = document.getElementById("installBtn");
+  installBtn.hidden = false;
+
+  installBtn.onclick = async () => {
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    installBtn.hidden = true;
+  };
+});
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(console.warn);
+  });
+}
+
+loadTheme();
+render();
+updateStats();
+</script>
+
+</body>
+</html>
